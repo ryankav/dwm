@@ -1,7 +1,6 @@
 dwm - dynamic window manager
 ============================
-dwm is an extremely fast, small, and dynamic window manager for X.
-
+dwm is the window manager I've chosen to use and this repository contains my configuration.
 
 Requirements
 ------------
@@ -46,3 +45,19 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+Notes
+-----
+When setting up the backlight controls in dwm I ran into issues
+with backlight as it wasn't correctly identifying the backlight
+directory to resolve this issue I read the [arch wiki](https://wiki.archlinux.org/title/backlight), which is
+very helpful. To resolve the issue need to add:
+```
+Section "Device"
+    Identifier  "Intel Graphics"
+    Driver      "intel"
+    Option      "Backlight"  "intel_backlight"
+EndSection
+```
+to the file `/etc/X11/xorg.conf.d/20-intel.conf`. This fixed the
+problem I was having with xbacklight.
